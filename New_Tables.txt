@@ -1,0 +1,103 @@
+table_8 = new JTable(newInput,8);
+		table_8.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		table_8.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		for (int i=0, j=0; i<newInput; i++, j++)
+		{
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).Name2,i,0);
+			table_8.setValueAt(GetLowerCaseIOType(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).sType),i,1);
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).ValueSearchSpecification,i,2);
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).BusinessComponent,i,3);
+			table_4.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).BusinessComponentField,i,4);
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).PropertyName,i,3);
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).Comments,i,4);
+			table_8.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newInp[j]).sSequence,i,5);
+		}
+		table_8.getColumnModel().getColumn(0).setHeaderValue("Input Argument");
+		table_8.getColumnModel().getColumn(1).setHeaderValue("Type");
+		table_8.getColumnModel().getColumn(2).setHeaderValue("Value / Expression");
+		table_8.getColumnModel().getColumn(3).setHeaderValue("BC");
+		table_8.getColumnModel().getColumn(4).setHeaderValue("BC Field");
+		table_8.getColumnModel().getColumn(5).setHeaderValue("Property Name");
+		table_8.getColumnModel().getColumn(6).setHeaderValue("Comments");
+		table_8.getColumnModel().getColumn(7).setHeaderValue("Sequence");
+		table_8.getTableHeader().setFont(new java.awt.Font("Tahoma",Font.PLAIN, 10));
+		table_8.getTableHeader().resizeAndRepaint();
+
+		JScrollPane inpPane2 = new JScrollPane(table_8);
+
+		table_9 = new JTable(newSrchSpec,7);
+		table_9.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		table_9.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		for (int i=0, j=0; i<newSrchSpec; i++, j++)
+		{
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).BusinessComponent,i,0);
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).OutputArg,i,1);
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).BusinessComponentField,i,2);
+			table_9.setValueAt(GetLowerCaseIOType(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).sType),i,3);
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).ValueSearchSpecification,i,4);
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).Comments,i,5);
+			table_9.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newSS[j]).sSequence,i,6);
+		}
+		table_9.getColumnModel().getColumn(0).setHeaderValue("Expression BC");
+		table_9.getColumnModel().getColumn(1).setHeaderValue("Filter BC");
+		table_9.getColumnModel().getColumn(2).setHeaderValue("BC Field");
+		table_9.getColumnModel().getColumn(3).setHeaderValue("Type");
+		table_9.getColumnModel().getColumn(4).setHeaderValue("Value / Expression");
+		table_9.getColumnModel().getColumn(5).setHeaderValue("Comments");
+		table_9.getColumnModel().getColumn(6).setHeaderValue("Sequence");
+		table_9.getTableHeader().setFont(new java.awt.Font("Tahoma",Font.PLAIN, 10));
+		table_9.getTableHeader().resizeAndRepaint();
+
+		JScrollPane ssPane2 = new JScrollPane(table_9);
+
+		table_14 = new JTable(newField,8);
+		table_14.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		table_14.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		for (int i=0, j=0; i<newField; i++, j++)
+		{
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).Name2,i,0);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).sSequence,i,1);
+			table_14.setValueAt(GetLowerCaseIOType(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).sType),i,2);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).ValueSearchSpecification,i,3);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).PropertyName,i,4);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).BusinessComponent,i,5);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).BusinessComponentField,i,6);
+			table_14.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newFld[j]).Comments,i,7);
+		}
+		table_14.getColumnModel().getColumn(0).setHeaderValue("Field Name");
+		table_14.getColumnModel().getColumn(1).setHeaderValue("Sequence");
+		table_14.getColumnModel().getColumn(2).setHeaderValue("Type");
+		table_14.getColumnModel().getColumn(3).setHeaderValue("Value / Expression");
+		table_14.getColumnModel().getColumn(4).setHeaderValue("Property Name");
+		table_14.getColumnModel().getColumn(5).setHeaderValue("Business Componenet");
+		table_14.getColumnModel().getColumn(6).setHeaderValue("BC Field");
+		table_14.getColumnModel().getColumn(7).setHeaderValue("Comments");
+		table_14.getTableHeader().setFont(new java.awt.Font("Tahoma",Font.PLAIN, 10));
+		table_14.getTableHeader().resizeAndRepaint();
+
+		JScrollPane fldPane2 = new JScrollPane(table_14);
+
+		table_10 = new JTable(newOutput,8);
+		table_10.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		table_10.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		for (int i=0, j=0; i<newOutput; i++, j++)
+		{
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).PropertyName,i,0);
+			table_10.setValueAt(GetLowerCaseIOType(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).sType),i,1);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).ValueSearchSpecification,i,2);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).OutputArg,i,3);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).BusinessComponent,i,4);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).BusinessComponentField,i,5);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).Comments,i,6);
+			table_10.setValueAt(ListOfRepositoryWfStepIOArgumentNew.get(newOp[j]).sSequence,i,7);
+		}
+		table_10.getColumnModel().getColumn(0).setHeaderValue("Property Name");
+		table_10.getColumnModel().getColumn(1).setHeaderValue("Type");
+		table_10.getColumnModel().getColumn(2).setHeaderValue("Value / Expression");
+		table_10.getColumnModel().getColumn(3).setHeaderValue("Output Argument");
+		table_10.getColumnModel().getColumn(4).setHeaderValue("Business Component");
+		table_10.getColumnModel().getColumn(5).setHeaderValue("BC Field");
+		table_10.getColumnModel().getColumn(6).setHeaderValue("Comments");
+		table_10.getColumnModel().getColumn(7).setHeaderValue("Sequence");
+		table_10.getTableHeader().setFont(new java.awt.Font("Tahoma",Font.PLAIN, 10));
+		table_10.getTableHeader().resizeAndRepaint();

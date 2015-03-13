@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?Siebel-Property-Set EscapeNames="false"?>
+
+<SiebelMessage IntObjectFormat="Siebel Hierarchical" IntObjectName="EAI Data Map" MessageId="" MessageType="Integration Object">
+<ListOfEaiDataMap>
+<EaiObjectMap>
+<Comments>[SHALINIP][Created for with KCI scenario in NEO EventStatusUpdates][43501][1337]</Comments>
+<DestinationObjectName>ISDN T2R NEO IIO ORH BT</DestinationObjectName>
+<Name>ISDN T2R NEO ESU with KCI ORH BT</Name>
+<SourceObjectName>LLU NEO Unified Response ORH BT - External</SourceObjectName>
+<ListOfEaiComponentMap>
+<EaiComponentMap>
+<Comments/>
+<DestinationComponentName>LLU Fault Milestones ORH BT</DestinationComponentName>
+<DestinationValidation/>
+<Name>customerProblemEvent_LLU Fault Milestones ORH BT</Name>
+<ParentComponentMapName/>
+<SourceComponentName>customerProblemEvent</SourceComponentName>
+<SourceSearchSpecification/>
+<SourceValidation/>
+<ListOfEaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Additional Info</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.additionalInfo]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>CP Response Required</DestinationFieldName>
+<SourceFieldExpression>EAILookupSiebel ("ISDN T2R Fetch CP Flag",[&amp;KCITemplate])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Clock Stopped</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.clockFlag]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Estimated Response Time</DestinationFieldName>
+<SourceFieldExpression>[&amp;ERTime]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Id</DestinationFieldName>
+<SourceFieldExpression>"abc"</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>KCI Message</DestinationFieldName>
+<SourceFieldExpression>IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4445"), EAILookupSiebel ("ISDN T2R Fetch KCI Text",[&amp;KCITemplate]) +" "+ EAILookupSiebel ("ISDN T2R Fetch KCI Text","4445A"),IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4446"), EAILookupSiebel ("ISDN T2R Fetch KCI Text",[&amp;KCITemplate]) +" "+ EAILookupSiebel ("ISDN T2R Fetch KCI Text","4446A"),IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4019"), EAILookupSiebel ("ISDN T2R Fetch KCI Text",[&amp;KCITemplate]) +" "+ EAILookupSiebel ("ISDN T2R Fetch KCI Text","4019A"),IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4099"), EAILookupSiebel ("ISDN T2R Fetch KCI Text",[&amp;KCITemplate]) +" "+ EAILookupSiebel ("ISDN T2R Fetch KCI Text","4099A"), EAILookupSiebel ("ISDN T2R Fetch KCI Text",[&amp;KCITemplate])))))</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>KCI Code</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.KCITemplate]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Parent SR Id</DestinationFieldName>
+<SourceFieldExpression>[&amp;Object Id]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>TYPE</DestinationFieldName>
+<SourceFieldExpression>"KCI"</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>EAOS</DestinationFieldName>
+<SourceFieldExpression>[&amp;EAOS]</SourceFieldExpression>
+</EaiFieldMap>
+</ListOfEaiFieldMap>
+</EaiComponentMap>
+<EaiComponentMap>
+<Comments/>
+<DestinationComponentName>Service Request</DestinationComponentName>
+<DestinationValidation/>
+<Name>customerProblemEvent_Service Request</Name>
+<ParentComponentMapName/>
+<SourceComponentName>customerProblemEvent</SourceComponentName>
+<SourceSearchSpecification/>
+<SourceValidation/>
+<ListOfEaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>MBORC Reference</DestinationFieldName>
+<SourceFieldExpression>IIF([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","3089") OR [&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","3090"),[&amp;New Mborc Reference],IIF([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","3091"),"",[&amp;Old Mborc Reference]))</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>BES Status</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.serviceFaultStatus]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Elapsed Time</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.elapsedTime]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Id</DestinationFieldName>
+<SourceFieldExpression>[&amp;Object Id]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Mod Id</DestinationFieldName>
+<SourceFieldExpression>[&amp;Mod Key]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>PONR FLAG</DestinationFieldName>
+<SourceFieldExpression>[&amp;PONR Flag]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>TSC</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.timeScaleCharges]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Total Clock Time</DestinationFieldName>
+<SourceFieldExpression>[serviceFault.totalClockTime]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>UNM Waiting Flag</DestinationFieldName>
+<SourceFieldExpression>[&amp;UNM Waiting Flag]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Co-op flag</DestinationFieldName>
+<SourceFieldExpression>IIf ([&amp;KCITemplate]='4390', 'N',[&amp;Co-op Flag])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Twenty Four Hour Access</DestinationFieldName>
+<SourceFieldExpression>[&amp;Twenty Four Hour Access]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>MFL</DestinationFieldName>
+<SourceFieldExpression>IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4068") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4265") OR [&amp;KCITemplate]=LookupValue("ISDN_T2R_KCI_TYPE","4266") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4267") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4269") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4270") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4271") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4272") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4273") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4274") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4275") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4278") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4276") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4279") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4286"), [&amp;MFL_New],[&amp;MFL])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Incident Reference</DestinationFieldName>
+<SourceFieldExpression>IIF ([&amp;KCITemplate] = LookupValue("ISDN_T2R_KCI_TYPE","4424") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4081") OR [&amp;KCITemplate]=LookupValue("ISDN_T2R_KCI_TYPE","4252") OR [&amp;KCITemplate] =LookupValue("ISDN_T2R_KCI_TYPE","4253"),[&amp;Incident Reference_New],[&amp;Incident Reference])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Escalation Flag</DestinationFieldName>
+<SourceFieldExpression>[&amp;Escalation Flag]</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Sub-Status</DestinationFieldName>
+<SourceFieldExpression>IIf ([&amp;KCITemplate]=LookupValue("ISDN_T2R_KCI_TYPE","4469"), "In Progress",[&amp;Sub Status])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Estimated Response Time</DestinationFieldName>
+<SourceFieldExpression>IIF([&amp;KCITemplate]=LookupValue("ISDN_T2R_KCI_TYPE","4068"),[&amp;ERTime],[&amp;Secondary ERT])</SourceFieldExpression>
+</EaiFieldMap>
+</ListOfEaiFieldMap>
+</EaiComponentMap>
+<EaiComponentMap>
+<Comments/>
+<DestinationComponentName>FIN Service Request Notes</DestinationComponentName>
+<DestinationValidation/>
+<Name>note_FIN Service Request Notes</Name>
+<ParentComponentMapName/>
+<SourceComponentName>note</SourceComponentName>
+<SourceSearchSpecification/>
+<SourceValidation/>
+<ListOfEaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Note</DestinationFieldName>
+<SourceFieldExpression>IIF ([noteDescription] is NULL , "Blank note description received from Neo", [noteDescription])</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Note DateTime</DestinationFieldName>
+<SourceFieldExpression>IIF ([noteDateTime] is NULL , "01/01/1900 00:00:00", Mid([noteDateTime],6,2) + "/" + Mid([noteDateTime],9,2) + "/" + Left([noteDateTime],4) + " " + Mid([noteDateTime],12,8))</SourceFieldExpression>
+</EaiFieldMap>
+<EaiFieldMap>
+<Comments/>
+<DestinationFieldName>Note Type</DestinationFieldName>
+<SourceFieldExpression>IIF([&amp;KCITemplate] = "IU02",[noteType],"Management Note")</SourceFieldExpression>
+</EaiFieldMap>
+</ListOfEaiFieldMap>
+</EaiComponentMap>
+</ListOfEaiComponentMap>
+<ListOfEAIMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Co-op Flag</DisplayName>
+<Name>Co-op Flag</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>EAOS</DisplayName>
+<Name>EAOS</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>ERTime</DisplayName>
+<Name>ERTime</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Escalation Flag</DisplayName>
+<Name>Escalation Flag</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Incident Reference</DisplayName>
+<Name>Incident Reference</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Incident Reference_New</DisplayName>
+<Name>Incident Reference_New</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>KCITemplate</DisplayName>
+<Name>KCITemplate</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>MFL</DisplayName>
+<Name>MFL</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>MFL_New</DisplayName>
+<Name>MFL_New</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Mod Key</DisplayName>
+<Name>Mod Key</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>New Mborc Reference</DisplayName>
+<Name>New Mborc Reference</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Object Id</DisplayName>
+<Name>Object Id</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Sub Status</DisplayName>
+<Name>Sub Status</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Twenty Four Hour Access</DisplayName>
+<Name>Twenty Four Hour Access</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>UNM Waiting Flag</DisplayName>
+<Name>UNM Waiting Flag</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Old Mborc Reference</DisplayName>
+<Name>Old Mborc Reference</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>PONR Flag</DisplayName>
+<Name>PONR Flag</Name>
+</EaiMapArgument>
+<EaiMapArgument>
+<Comments/>
+<DataType>DTYPE_TEXT</DataType>
+<DisplayName>Secondary ERT</DisplayName>
+<Name>Secondary ERT</Name>
+</EaiMapArgument>
+</ListOfEAIMapArgument>
+</EaiObjectMap>
+</ListOfEaiDataMap>
+</SiebelMessage>

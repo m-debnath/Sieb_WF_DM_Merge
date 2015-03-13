@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE contacts [
+<!ELEMENT contacts (person)*>
+<!ELEMENT person (name, email)>
+<!ELEMENT name (#PCDATA | bold)*>
+<!ELEMENT email (#PCDATA)>
+]>
+
+<contacts>
+    <person>
+        <name>Ichobad Crane</name>
+        <email>sleepy@hollow.net</email>
+    </person>
+</contacts>

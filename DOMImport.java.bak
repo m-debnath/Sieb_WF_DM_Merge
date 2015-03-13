@@ -1,0 +1,60 @@
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.*;
+
+public class DOMImport {
+    static public void main(String[] arg) {
+        if(arg.length != 3) {
+            System.err.println(
+                    "Usage: DOMImport <infile1> <infile2> <outfile>");
+            System.exit(1);
+        }
+        DOMImport dc = new DOMImport();
+        dc.inandout(arg[0],arg[1],arg[2]);
+    }
+    public void inandout(String infile1,String infile2,String outfile) {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setValidating(true);
+        dbf.setNamespaceAware(true);
+        dbf.setIgnoringElementContentWhitespace(true);
+
+        Document doc1 = null;
+        Document doc2 = null;
+        try {
+            DocumentBuilder builder = dbf.newDocumentBuilder();
+            //builder.setErrorHandler(new MyErrorHandler());
+            InputSource is1 = new InputSource(infile1);
+            doc1 = builder.parse(is1);
+            InputSource is2 = new InputSource(infile2);
+            doc2 = builder.parse(is2);
+            importName(doc1,doc2);
+            FileOutputStream fos = new FileOutputStream(outfile);
+            TreeToXML ttxml = new TreeToXML();
+            ttxml.write(fos,doc2);
+            fos.close();
+        } catch (SAXException e) {
+            System.exit(1);
+        } catch (ParserConfigurationException e) {
+            System.err.println(e);
+            System.exit(1);
+        } catch (IOException e) {
+            System.err.println(e);
+            System.exit(1);
+        }
+    }
+    public void importName(Document doc1,Document doc2) {
+        Element root1 = doc1.getDocumentElement();
+        Element personInDoc1 = (Element)root1.getFirstChild();
+
+        Node importedPerson = doc2.importNode(personInDoc1,true);
+
+        Element root2 = doc2.getDocumentElement();
+        root2.appendChild(importedPerson);
+    }
+}

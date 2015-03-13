@@ -1,0 +1,35 @@
+
+			if (ListOfRepositoryWfBranchCriteria.get(i).sOperation.equals("IS_NULL") || ListOfRepositoryWfBranchCriteria.get(i).sOperation.equals("IS_NOT_NULL"))
+			{
+				if (ListOfRepositoryWfBranchCriteria.get(i).CompareTo.equals("APPLET"))
+				{
+					newExpression = newExpression + "(" + ListOfRepositoryWfBranchCriteria.get(i).AppletName + ".." + ListOfRepositoryWfBranchCriteria.get(i).AppletFieldName + " " + GetLowerCaseBranchCriteriaOperation(ListOfRepositoryWfBranchCriteria.get(i).sOperation) + ")";
+				}
+				if (ListOfRepositoryWfBranchCriteria.get(i).CompareTo.equals("BUSCOMP"))
+				{
+					newExpression = newExpression + "(" + ListOfRepositoryWfBranchCriteria.get(i).BusinessComponent + ".." + ListOfRepositoryWfBranchCriteria.get(i).BusinessComponentField + " " + GetLowerCaseBranchCriteriaOperation(ListOfRepositoryWfBranchCriteria.get(i).sOperation) + ")";
+				}
+				if (ListOfRepositoryWfBranchCriteria.get(i).CompareTo.equals("PROPERTY"))
+				{
+					newExpression = newExpression + "(" + ListOfRepositoryWfBranchCriteria.get(i).PropertyName + " " + GetLowerCaseBranchCriteriaOperation(ListOfRepositoryWfBranchCriteria.get(i).sOperation) + ")";
+				}
+			}
+
+
+
+
+
+			
+			if (ListOfRepositoryWfBranchCriteria.get(i).CompareTo.equals("EXPRESSION"))
+			{
+				newExpression = newExpression + "(" + ListOfRepositoryWfBranchCriteria.get(i).BusinessComponent + " " + GetLowerCaseBranchCriteriaOperation(ListOfRepositoryWfBranchCriteria.get(i).sOperation) + "(";
+				for (int j=0; j<ListOfRepositoryWfBranchCriteria.get(i).GetListOfRepositoryWfBranchCriteriaValue().size(); j++)
+				{
+					if (j>0)
+					{
+						newExpression = newExpression + " AND ";
+					}
+					newExpression = newExpression + "'" + ListOfRepositoryWfBranchCriteria.get(i).GetListOfRepositoryWfBranchCriteriaValue().get(j).LO_CHAR5 + "'";
+				}
+				newExpression = newExpression + "))";
+			}

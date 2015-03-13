@@ -1,0 +1,47 @@
+public class EaiFieldMap implements Cloneable {
+	public String Comments;
+	public String DestinationFieldName;
+	public String SourceFieldExpression;
+
+	public void init() {
+		Comments = new String("");
+		DestinationFieldName = new String("");
+		SourceFieldExpression = new String("");
+	}
+
+	public EaiFieldMap() {
+		this.init();
+	}
+
+	public EaiFieldMap(String Comments, String DestinationFieldName, String SourceFieldExpression) {
+		this.init();
+		this.Comments = Comments;
+		this.DestinationFieldName = DestinationFieldName;
+		this.SourceFieldExpression = SourceFieldExpression;
+	}
+
+	public String toString() {
+		return SourceFieldExpression + "\t" + DestinationFieldName + "\t" + Comments;
+	}
+
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
+	public boolean equals(EaiFieldMap eaiFieldMap) {
+		/*System.out.println("this.Comments: " + this.Comments);
+		System.out.println("eaiFieldMap.Comments: " + eaiFieldMap.Comments);
+		System.out.println("this.DestinationFieldName: " + this.DestinationFieldName);
+		System.out.println("eaiFieldMap.DestinationFieldName: " + eaiFieldMap.DestinationFieldName);
+		System.out.println("this.SourceFieldExpression: " + this.SourceFieldExpression);
+		System.out.println("eaiFieldMap.SourceFieldExpression: " + eaiFieldMap.SourceFieldExpression);*/
+		if (eaiFieldMap.DestinationFieldName.equals(this.DestinationFieldName) && eaiFieldMap.SourceFieldExpression.equals(this.SourceFieldExpression))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE folks [
+<!ELEMENT folks (person)*>
+<!ELEMENT person (name, phone, email)>
+<!ELEMENT name (#PCDATA | bold)*>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+]>
+
+<folks>
+    <person>
+        <name>Zaphod Beeblebrox</name>
+        <phone>907 555-9882</phone>
+        <email>outer@space.net</email>
+    </person>
+</folks>

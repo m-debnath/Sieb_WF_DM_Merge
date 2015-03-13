@@ -1,0 +1,12 @@
+import javax.swing.table.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.Color;
+
+public class MyTableCellEditor extends DefaultCellEditor {
+    //@Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+		setFont(new Font("Tahoma", Font.PLAIN, 10);
+		return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+    }
+}

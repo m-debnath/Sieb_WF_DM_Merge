@@ -1,0 +1,208 @@
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+import java.util.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
+
+public class MergeWfBranhConnector {
+	public static void main(String[] args) {
+		ArrayList<String> xmlListOfBrnchConnAttrLower, xmlListOfBrnchConnAttrHigher;
+		RepositoryWfBranchConnector repWfBrnchConnLower, repWfBrnchConnHigher;
+		ArrayList<RepositoryWfBranchConnector> listOfrepWfBrnchConnLower, listOfrepWfBrnchConnHigher, listOfrepWfBrnchConnCommonMerged, listOfrepWfBrnchConnLowerMerged, listOfrepWfBrnchConnHigherMerged, listOfrepWfBrnchConnFinalMerged;
+
+		try {
+			BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+			System.out.print("Enter Lower Release WF File name: ");
+			String xmlFileLower = bf.readLine();
+			System.out.print("Enter Higher Release WF File name: ");
+			String xmlFileHigher = bf.readLine();
+			System.out.print("Enter Target WF File name: ");
+			String xmlTarget = bf.readLine();
+			File fileLower = new File(xmlFileLower);
+			File fileHigher = new File(xmlFileHigher);
+			if (fileLower.exists() && fileHigher.exists()) {
+
+				// Processing Process Properties for Higher Version Workflow
+				DocumentBuilderFactory factoryLower = DocumentBuilderFactory.newInstance();
+				// Create the builder and parse the file
+				Document docLower = factoryLower.newDocumentBuilder().parse(xmlFileLower);
+				NodeList xmlBrnchConnListLower = docLower.getElementsByTagName("RepositoryWfBranchConnector");
+				listOfrepWfBrnchConnLower = new ArrayList<RepositoryWfBranchConnector>();
+				//System.out.println("\nLower XML Document Contains " + xmlBrnchConnListLower.getLength() + "  Process Properties.");
+				for (int i=0; i<xmlBrnchConnListLower.getLength(); i++) {
+					 // Get element
+					Element xmlBrnchConn = (Element)xmlBrnchConnListLower.item(i);
+					NodeList xmlBrnchConnAttrList = xmlBrnchConn.getChildNodes();
+					xmlListOfBrnchConnAttrLower = new ArrayList<String>();
+					for (int j=0; j<xmlBrnchConnAttrList.getLength(); j++)
+					{
+						Element xmlBrnchConnAttr = (Element)xmlBrnchConnAttrList.item(j);
+						xmlListOfBrnchConnAttrLower.add(xmlBrnchConnAttr.getTextContent());
+					}
+
+					repWfBrnchConnLower = new RepositoryWfBranchConnector(xmlListOfBrnchConnAttrLower.get(0), xmlListOfBrnchConnAttrLower.get(1), xmlListOfBrnchConnAttrLower.get(2), xmlListOfBrnchConnAttrLower.get(3), xmlListOfBrnchConnAttrLower.get(4), xmlListOfBrnchConnAttrLower.get(5), xmlListOfBrnchConnAttrLower.get(6), xmlListOfBrnchConnAttrLower.get(7));
+					listOfrepWfBrnchConnLower.add(repWfBrnchConnLower);
+					
+				}
+
+				/*// Printing Process Properties for Lower Version Workflow
+				for(int k=0;k<listOfrepWfBrnchConnLower.size();k++) {
+					RepositoryWfBranchConnector tempLower = (RepositoryWfBranchConnector)listOfrepWfBrnchConnLower.get(k);
+					System.out.println();
+					System.out.println("Proc Prop " + (k+1) + " Name: " + tempLower.Name2);
+					System.out.println("Proc Prop " + (k+1) + " Access Mode: " + tempLower.AccessMode);
+					System.out.println("Proc Prop " + (k+1) + " Data Type: " + tempLower.DataType);
+					System.out.println("Proc Prop " + (k+1) + " In / Out: " + tempLower.InOut);
+				}*/
+				// End of Lower
+
+				// Processing Process Properties for Higher Version Workflow
+				DocumentBuilderFactory factoryHigher = DocumentBuilderFactory.newInstance();
+				// Create the builder and parse the file
+				Document docHigher = factoryHigher.newDocumentBuilder().parse(xmlFileHigher);
+				NodeList xmlBrnchConnListHigher = docHigher.getElementsByTagName("RepositoryWfBranchConnector");
+				listOfrepWfBrnchConnHigher = new ArrayList<RepositoryWfBranchConnector>();
+				//System.out.println("\nHigher XML Document Contains " + xmlBrnchConnListHigher.getLength() + "  Process Properties.");
+				for (int i=0; i<xmlBrnchConnListHigher.getLength(); i++) {
+					 // Get element
+					Element xmlBrnchConn = (Element)xmlBrnchConnListHigher.item(i);
+					NodeList xmlBrnchConnAttrList = xmlBrnchConn.getChildNodes();
+					xmlListOfBrnchConnAttrHigher = new ArrayList<String>();
+					for (int j=0; j<xmlBrnchConnAttrList.getLength(); j++)
+					{
+						Element xmlBrnchConnAttr = (Element)xmlBrnchConnAttrList.item(j);
+						xmlListOfBrnchConnAttrHigher.add(xmlBrnchConnAttr.getTextContent());
+					}
+
+					repWfBrnchConnHigher = new RepositoryWfBranchConnector(xmlListOfBrnchConnAttrHigher.get(0), xmlListOfBrnchConnAttrHigher.get(1), xmlListOfBrnchConnAttrHigher.get(2), xmlListOfBrnchConnAttrHigher.get(3), xmlListOfBrnchConnAttrHigher.get(4), xmlListOfBrnchConnAttrHigher.get(5), xmlListOfBrnchConnAttrHigher.get(6), xmlListOfBrnchConnAttrHigher.get(7));
+					listOfrepWfBrnchConnHigher.add(repWfBrnchConnHigher);
+					
+				}
+
+				/*// Printing Process Properties for Higher Version Workflow
+				for(int k=0;k<listOfrepWfBrnchConnHigher.size();k++) {
+					RepositoryWfBranchConnector tempHigher = (RepositoryWfBranchConnector)listOfrepWfBrnchConnHigher.get(k);
+					System.out.println();
+					System.out.println("Proc Prop " + (k+1) + " Name: " + tempHigher.Name2);
+					System.out.println("Proc Prop " + (k+1) + " Access Mode: " + tempHigher.AccessMode);
+					System.out.println("Proc Prop " + (k+1) + " Data Type: " + tempHigher.DataType);
+					System.out.println("Proc Prop " + (k+1) + " In / Out: " + tempHigher.InOut);
+				}*/
+				// End of Higher
+
+				//Consolidating common Process Properties in both Wfs using Array List
+				listOfrepWfBrnchConnCommonMerged = new ArrayList<RepositoryWfBranchConnector>();
+				listOfrepWfBrnchConnLowerMerged = new ArrayList<RepositoryWfBranchConnector>();
+				listOfrepWfBrnchConnHigherMerged = new ArrayList<RepositoryWfBranchConnector>();
+				listOfrepWfBrnchConnFinalMerged = new ArrayList<RepositoryWfBranchConnector>();
+				int lowerMatchCtr, higherMatchCtr, lowerCtr, lowerAuxCtr, higherAuxCtr, higherCtr, mergedAuxCtr;
+				//Placing the common Process Props in listOfrepWfBrnchConnCommonMerged
+				for (lowerMatchCtr=0; lowerMatchCtr<listOfrepWfBrnchConnLower.size(); lowerMatchCtr++)
+				{
+					for (higherMatchCtr=0; higherMatchCtr<listOfrepWfBrnchConnHigher.size(); higherMatchCtr++)
+					{
+						if (listOfrepWfBrnchConnLower.get(lowerMatchCtr).Name2.equals(listOfrepWfBrnchConnHigher.get(higherMatchCtr).Name2))
+						{
+							listOfrepWfBrnchConnCommonMerged.add(listOfrepWfBrnchConnLower.get(lowerMatchCtr));
+						}
+					}
+				}
+
+				//Placing the lower extra Process Props in listOfrepWfBrnchConnLowerMerged
+				for (lowerCtr=0; lowerCtr<listOfrepWfBrnchConnLower.size(); lowerCtr++)
+				{
+					for (higherAuxCtr=0; higherAuxCtr<listOfrepWfBrnchConnHigher.size(); higherAuxCtr++)
+					{
+						if (listOfrepWfBrnchConnLower.get(lowerCtr).Name2.equals(listOfrepWfBrnchConnHigher.get(higherAuxCtr).Name2))
+						{
+							break;
+						}
+					}
+					if (higherAuxCtr == listOfrepWfBrnchConnHigher.size())
+					{
+						listOfrepWfBrnchConnLowerMerged.add(listOfrepWfBrnchConnLower.get(lowerCtr));
+					}
+				}
+
+				//Placing the higher extra Process Props in listOfrepWfBrnchConnHigherMerged
+				for (higherCtr=0; higherCtr<listOfrepWfBrnchConnHigher.size(); higherCtr++)
+				{
+					for (lowerAuxCtr=0; lowerAuxCtr<listOfrepWfBrnchConnLower.size(); lowerAuxCtr++)
+					{
+						if (listOfrepWfBrnchConnHigher.get(higherCtr).Name2.equals(listOfrepWfBrnchConnLower.get(lowerAuxCtr).Name2))
+						{
+							break;
+						}
+					}
+					if (lowerAuxCtr == listOfrepWfBrnchConnLower.size())
+					{
+						listOfrepWfBrnchConnHigherMerged.add(listOfrepWfBrnchConnHigher.get(higherCtr));
+					}
+				}
+
+				//listOfrepWfBrnchConnFinalMerged = listOfrepWfBrnchConnCommonMerged + listOfrepWfBrnchConnLowerMerged + listOfrepWfBrnchConnHigherMerged
+				listOfrepWfBrnchConnFinalMerged.addAll(listOfrepWfBrnchConnCommonMerged);
+				listOfrepWfBrnchConnFinalMerged.addAll(listOfrepWfBrnchConnLowerMerged);
+				listOfrepWfBrnchConnFinalMerged.addAll(listOfrepWfBrnchConnHigherMerged);
+
+				/*// Printing Process Properties for Merged Workflow
+				System.out.println("\nNumber of Final Process Properties: " + listOfrepWfBrnchConnFinalMerged.size());
+				for(int k=0;k<listOfrepWfBrnchConnFinalMerged.size();k++) {
+					RepositoryWfBranchConnector tempFinalMerged = (RepositoryWfBranchConnector)listOfrepWfBrnchConnFinalMerged.get(k);
+					//System.out.println("\nMerged Process Properties.");
+					System.out.println("\nProc Prop " + (k+1) + " Name: " + tempFinalMerged.Name2);
+					System.out.println("Proc Prop " + (k+1) + " Access Mode: " + tempFinalMerged.AccessMode);
+					System.out.println("Proc Prop " + (k+1) + " Data Type: " + tempFinalMerged.DataType);
+					System.out.println("Proc Prop " + (k+1) + " In / Out: " + tempFinalMerged.InOut);
+				}*/
+
+				DocumentBuilderFactory factoryTarget = DocumentBuilderFactory.newInstance();
+				DocumentBuilder docBuilderTarget = factoryTarget.newDocumentBuilder();
+				Document docTarget = docBuilderTarget.newDocument();
+				docTarget.setXmlStandalone(true);
+				Element targetRoot = docTarget.createElement("ListOfRepositoryWfBranchConnector");
+				docTarget.appendChild(targetRoot);
+				for (int k=0;k<listOfrepWfBrnchConnFinalMerged.size();k++){
+					Element xmlRepWfBrnchConn = docTarget.createElement("RepositoryWfBranchConnector");
+					//xmlRepWfBrnchConn.appendChild(docTarget.createTextNode("data"));
+					targetRoot.appendChild(xmlRepWfBrnchConn);
+
+					Element xmlRepWfBrnchConnAttr = docTarget.createElement("Comments");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).Comments);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("FromStepName");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).FromStepName);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("Inactive");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).Inactive);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("Layout");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).Layout);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("Name2");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).Name2);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("ForBranchName");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).ForBranchName);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("ParentType");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).ParentType);
+					xmlRepWfBrnchConnAttr = docTarget.createElement("ToStepName");
+					xmlRepWfBrnchConn.appendChild(xmlRepWfBrnchConnAttr).setTextContent(listOfrepWfBrnchConnFinalMerged.get(k).ToStepName);
+				}
+				TransformerFactory transformerFactory = TransformerFactory.newInstance();
+				Transformer transformer = transformerFactory.newTransformer();
+				DOMSource source = new DOMSource(docTarget);
+				FileWriter fstream = new FileWriter(xmlTarget);
+				BufferedWriter out = new BufferedWriter(fstream);
+				StreamResult result =  new StreamResult(out);
+				transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+				transformer.transform(source, result);
+
+				System.out.println("\nMerged WF " + xmlTarget + " written in invoking directory. :)");
+			}
+			else{
+				System.out.println("\nFile not found!");
+			}
+		}
+		catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+}

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?><?Siebel-Property-Set EscapeNames="false"?><SiebelMessage
+ MessageId=""
+ IntObjectName="EAI Data Map"
+ MessageType="Integration Object"
+ IntObjectFormat="Siebel Hierarchical"
+><ListOfEaiDataMap
+><EaiObjectMap
+><Comments
+>[SHALINIP][Created for with KCI scenario in NEO EventStatusUpdates][43501][1337]</Comments
+><DestinationObjectName
+>ISDN T2R NEO IIO ORH BT</DestinationObjectName
+><Name
+>ISDN T2R NEO ESU with KCI ORH BT</Name
+><SourceObjectName
+>LLU NEO Unified Response ORH BT - External</SourceObjectName
+><ListOfEaiComponentMap
+><EaiComponentMap
+><Comments
+></Comments
+><DestinationComponentName
+>LLU Fault Milestones ORH BT</DestinationComponentName
+><DestinationValidation
+></DestinationValidation
+><Name
+>customerProblemEvent_LLU Fault Milestones ORH BT</Name
+><ParentComponentMapName
+></ParentComponentMapName
+><SourceComponentName
+>customerProblemEvent</SourceComponentName
+><SourceSearchSpecification
+></SourceSearchSpecification
+><SourceValidation
+></SourceValidation
+><ListOfEaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Additional Info</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.additionalInfo]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>CP Response Required</DestinationFieldName
+><SourceFieldExpression
+>EAILookupSiebel (&quot;ISDN T2R Fetch CP Flag&quot;,[&amp;KCITemplate])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Clock Stopped</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.clockFlag]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Estimated Response Time</DestinationFieldName
+><SourceFieldExpression
+>[&amp;ERTime]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Id</DestinationFieldName
+><SourceFieldExpression
+>&quot;abc&quot;</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>KCI Message</DestinationFieldName
+><SourceFieldExpression
+>IIF ([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4445&quot;), EAILookupSiebel (&quot;ISDN T2R Fetch KCI Text&quot;,[&amp;KCITemplate]) +&quot; &quot;+ EAILookupSiebel (&quot;ISDN T2R Fetch KCI Text&quot;,&quot;4445A&quot;),IIF ([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4446&quot;), EAILookupSiebel (&quot;ISDN T2R Fetch KCI Text&quot;,[&amp;KCITemplate]) +&quot; &quot;+ EAILookupSiebel (&quot;ISDN T2R Fetch KCI Text&quot;,&quot;4446A&quot;), EAILookupSiebel (&quot;ISDN T2R Fetch KCI Text&quot;,[&amp;KCITemplate])))</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>KCI Code</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.KCITemplate]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Parent SR Id</DestinationFieldName
+><SourceFieldExpression
+>[&amp;Object Id]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>TYPE</DestinationFieldName
+><SourceFieldExpression
+>&quot;KCI&quot;</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>EAOS</DestinationFieldName
+><SourceFieldExpression
+>[&amp;EAOS]</SourceFieldExpression
+></EaiFieldMap
+></ListOfEaiFieldMap
+></EaiComponentMap
+><EaiComponentMap
+><Comments
+></Comments
+><DestinationComponentName
+>Service Request</DestinationComponentName
+><DestinationValidation
+></DestinationValidation
+><Name
+>customerProblemEvent_Service Request</Name
+><ParentComponentMapName
+></ParentComponentMapName
+><SourceComponentName
+>customerProblemEvent</SourceComponentName
+><SourceSearchSpecification
+></SourceSearchSpecification
+><SourceValidation
+></SourceValidation
+><ListOfEaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>MBORC Reference</DestinationFieldName
+><SourceFieldExpression
+>IIF([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;3089&quot;) OR [&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;3090&quot;),[&amp;New Mborc Reference],IIF([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;3091&quot;),&quot;&quot;,[&amp;Old Mborc Reference]))</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>BES Status</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.serviceFaultStatus]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Elapsed Time</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.elapsedTime]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Id</DestinationFieldName
+><SourceFieldExpression
+>[&amp;Object Id]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Mod Id</DestinationFieldName
+><SourceFieldExpression
+>[&amp;Mod Key]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>PONR FLAG</DestinationFieldName
+><SourceFieldExpression
+>[&amp;PONR Flag]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>TSC</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.timeScaleCharges]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Total Clock Time</DestinationFieldName
+><SourceFieldExpression
+>[serviceFault.totalClockTime]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>UNM Waiting Flag</DestinationFieldName
+><SourceFieldExpression
+>[&amp;UNM Waiting Flag]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Co-op flag</DestinationFieldName
+><SourceFieldExpression
+>IIf ([&amp;KCITemplate]=&apos;4390&apos;, &apos;N&apos;,[&amp;Co-op Flag])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Twenty Four Hour Access</DestinationFieldName
+><SourceFieldExpression
+>[&amp;Twenty Four Hour Access]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>MFL</DestinationFieldName
+><SourceFieldExpression
+>IIF ([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4068&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4265&quot;) OR [&amp;KCITemplate]=LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4266&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4267&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4269&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4270&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4271&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4272&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4273&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4274&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4275&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4278&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4276&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4279&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4286&quot;), [&amp;MFL_New],[&amp;MFL])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Incident Reference</DestinationFieldName
+><SourceFieldExpression
+>IIF ([&amp;KCITemplate] = LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4424&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4081&quot;) OR [&amp;KCITemplate]=LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4252&quot;) OR [&amp;KCITemplate] =LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4253&quot;),[&amp;Incident Reference_New],[&amp;Incident Reference])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Escalation Flag</DestinationFieldName
+><SourceFieldExpression
+>[&amp;Escalation Flag]</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Sub-Status</DestinationFieldName
+><SourceFieldExpression
+>IIf ([&amp;KCITemplate]=LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4469&quot;), &quot;In Progress&quot;,[&amp;Sub Status])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Estimated Response Time</DestinationFieldName
+><SourceFieldExpression
+>IIF([&amp;KCITemplate]=LookupValue(&quot;ISDN_T2R_KCI_TYPE&quot;,&quot;4068&quot;),[&amp;ERTime],[&amp;Secondary ERT])</SourceFieldExpression
+></EaiFieldMap
+></ListOfEaiFieldMap
+></EaiComponentMap
+><EaiComponentMap
+><Comments
+></Comments
+><DestinationComponentName
+>FIN Service Request Notes</DestinationComponentName
+><DestinationValidation
+></DestinationValidation
+><Name
+>note_FIN Service Request Notes</Name
+><ParentComponentMapName
+></ParentComponentMapName
+><SourceComponentName
+>note</SourceComponentName
+><SourceSearchSpecification
+></SourceSearchSpecification
+><SourceValidation
+></SourceValidation
+><ListOfEaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Note</DestinationFieldName
+><SourceFieldExpression
+>IIF ([noteDescription] is NULL , &quot;Blank note description received from Neo&quot;, [noteDescription])</SourceFieldExpression
+></EaiFieldMap
+><EaiFieldMap
+><Comments
+></Comments
+><DestinationFieldName
+>Note DateTime</DestinationFieldName
+><SourceFieldExpression
+>IIF ([noteDateTime] is NULL , &quot;01/01/1900 00:00:00&quot;, Mid([noteDateTime],6,2) + &quot;/&quot; + Mid([noteDateTime],9,2) + &quot;/&quot; + Left([noteDateTime],4) + &quot; &quot; + Mid([noteDateTime],12,8))</SourceFieldExpression
+></EaiFieldMap
+></ListOfEaiFieldMap
+></EaiComponentMap
+></ListOfEaiComponentMap
+><ListOfEaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Co-op Flag</DisplayName
+><Name
+>Co-op Flag</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>EAOS</DisplayName
+><Name
+>EAOS</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>ERTime</DisplayName
+><Name
+>ERTime</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Escalation Flag</DisplayName
+><Name
+>Escalation Flag</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Incident Reference</DisplayName
+><Name
+>Incident Reference</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Incident Reference_New</DisplayName
+><Name
+>Incident Reference_New</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>KCITemplate</DisplayName
+><Name
+>KCITemplate</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>MFL</DisplayName
+><Name
+>MFL</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>MFL_New</DisplayName
+><Name
+>MFL_New</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Mod Key</DisplayName
+><Name
+>Mod Key</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>New Mborc Reference</DisplayName
+><Name
+>New Mborc Reference</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Object Id</DisplayName
+><Name
+>Object Id</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Old Mborc Reference</DisplayName
+><Name
+>Old Mborc Reference</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>PONR Flag</DisplayName
+><Name
+>PONR Flag</Name
+></EaiMapArgument
+><EaiMapArgument
+><Comments
+></Comments
+><DataType
+>DTYPE_TEXT</DataType
+><DisplayName
+>Secondary ERT</DisplayName
+><Name
+>Secondary ERT</Name
+></EaiMapArgument
+></ListOfEaiMapArgument
+></EaiObjectMap
+></ListOfEaiDataMap
+></SiebelMessage
+>

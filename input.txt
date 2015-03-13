@@ -1,0 +1,9 @@
+E:\Documents\Java_XML_POC\1700_Changed_WF
+
+E:\Documents\Java_XML_POC\1700_Changed_WF - Copy
+
+E:\Documents\Java_XML_POC\asd
+
+
+
+"[Parent SR Id] =  '" + [&Object Id] + "' AND [Type] = 'FAULT_NEO' AND [QuesName] = 'LLUSQ0005'"

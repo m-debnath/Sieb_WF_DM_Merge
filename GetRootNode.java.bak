@@ -1,0 +1,28 @@
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+import java.io.*;
+
+public class GetRootNode{
+  public static void main(String[] args) {
+  try{
+  BufferedReader bf = new BufferedReader(
+   new InputStreamReader(System.in));
+  System.out.print("Enter xml file name: ");
+  String str = bf.readLine();
+  File file = new File(str);
+  if (file.exists()){
+  DocumentBuilderFactory fact = 
+   DocumentBuilderFactory.newInstance();
+  DocumentBuilder builder = fact.newDocumentBuilder();
+  Document doc = builder.parse(str);
+  Node node = doc.getDocumentElement();
+  String root = node.getNodeName();
+  System.out.println("Root Node: " + root);
+  }
+  else{
+  System.out.println("File not found!");
+  }
+  }
+  catch(Exception e){}
+  }
+}

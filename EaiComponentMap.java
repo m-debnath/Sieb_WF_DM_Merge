@@ -1,0 +1,100 @@
+import java.util.*;
+import com.rits.cloning.*;
+
+public class EaiComponentMap implements Cloneable {
+	public String Comments;
+	public String DestinationComponentName;
+	public String DestinationValidation;
+	public String sName;
+	public String ParentComponentMapName;
+	public String SourceComponentName;
+	public String SourceSearchSpecification;
+	public String SourceValidation;
+
+	ArrayList<EaiFieldMap> ListOfEaiFieldMap;
+
+	public void init() {
+		Comments = new String("");
+		DestinationComponentName = new String("");
+		DestinationValidation = new String("");
+		sName = new String("");
+		ParentComponentMapName = new String("");
+		SourceComponentName = new String("");
+		SourceSearchSpecification = new String("");
+		SourceValidation = new String("");
+
+		ListOfEaiFieldMap = new ArrayList<EaiFieldMap>();
+	}
+
+	public EaiComponentMap() {
+		this.init();
+	}
+
+	public EaiComponentMap(String Comments, String DestinationComponentName, String DestinationValidation, String sName, String ParentComponentMapName, String SourceComponentName, String SourceSearchSpecification, String SourceValidation, ArrayList<EaiFieldMap> ListOfEaiFieldMap) {
+		this.init();
+
+		this.Comments = Comments;
+		this.DestinationComponentName = DestinationComponentName;
+		this.DestinationValidation = DestinationValidation;
+		this.sName = sName;
+		this.ParentComponentMapName = ParentComponentMapName;
+		this.SourceComponentName = SourceComponentName;
+		this.SourceSearchSpecification = SourceSearchSpecification;
+		this.SourceValidation = SourceValidation;
+
+		if (ListOfEaiFieldMap.size() > 0)
+		{
+			Cloner cloner = new Cloner();
+			this.ListOfEaiFieldMap = cloner.deepClone(ListOfEaiFieldMap);
+		}
+	}
+
+	public ArrayList<EaiFieldMap> GetListOfEaiFieldMap() {
+		return ListOfEaiFieldMap;
+	}
+
+	public void SetListOfEaiFieldMap(ArrayList<EaiFieldMap> ListOfEaiFieldMap) {
+		if (ListOfEaiFieldMap.size() > 0)
+		{
+			Cloner cloner = new Cloner();
+			this.ListOfEaiFieldMap = cloner.deepClone(ListOfEaiFieldMap);
+		}
+	}
+
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+
+	public boolean equals(EaiComponentMap eaiComponentMap) {
+		if (this.DestinationComponentName.equals(eaiComponentMap.DestinationComponentName) && this.DestinationValidation.equals(eaiComponentMap.DestinationValidation) && this.sName.equals(eaiComponentMap.sName) && this.ParentComponentMapName.equals(eaiComponentMap.ParentComponentMapName) && this.SourceComponentName.equals(eaiComponentMap.SourceComponentName) && this.SourceSearchSpecification.equals(eaiComponentMap.SourceSearchSpecification) && this.SourceValidation.equals(eaiComponentMap.SourceValidation))
+		{
+			if (this.GetListOfEaiFieldMap().size() != eaiComponentMap.GetListOfEaiFieldMap().size())
+			{
+				return false;
+			}
+			else
+			{
+				int i;
+				for (i=0; i<this.GetListOfEaiFieldMap().size(); i++)
+				{
+					if (!this.GetListOfEaiFieldMap().get(i).equals(eaiComponentMap.GetListOfEaiFieldMap().get(i)))
+					{
+						break;
+					}
+				}
+				if (i == this.GetListOfEaiFieldMap().size())
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
